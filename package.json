@@ -1,5 +1,5 @@
 {
-  "name": "image-optimization-test",
+  "name": "edge-image-catalog",
   "version": "1.0.0",
   "description": "Node.js + Express demo for edge image optimization catalog",
   "main": "server.js",
