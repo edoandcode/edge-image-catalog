@@ -5,6 +5,7 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
+const pricingRouter = require("./routes/pricing");
 
 const app = express();
 
@@ -19,20 +20,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// Placeholder: qui si potra' agganciare middleware auth/JWT in futuro.
-const apiRouter = express.Router();
-
-apiRouter.get("/transform", (req, res) => {
-  res.json({
-    status: "mock",
-    message: "Transform endpoint placeholder",
-    input: {
-      width: req.query.width || null,
-      quality: req.query.quality || null,
-      format: req.query.format || null
-    }
-  });
-});
 
 app.get("/", (req, res) => {
   res.render("index", { pageTitle: "Edge Image Catalog" });
@@ -42,7 +29,7 @@ app.get("/health", (req, res) => {
   res.json({ status: "ok" });
 });
 
-app.use("/api", apiRouter);
+app.use("/pricing", pricingRouter);
 
 app.listen(PORT, HOST, () => {
   console.log(`Server listening on http://${HOST}:${PORT}`);
