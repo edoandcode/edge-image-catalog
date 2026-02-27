@@ -17,7 +17,7 @@ const validateAuth = (req) => {
     return schema.safeParse(req);
 }
 
-router.post('/', async (req, res) => {
+router.post('/login', async (req, res) => {
     const { success, error } = validateAuth(req.body);
     if (!success)
         return res.status(400).json({ error: error?.issues.map(issue => issue.message).join(", ") });
