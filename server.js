@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const path = require("path");
 const connectToDatabase = require("./config/db");
 const routes = require("./config/routes");
+const auth = require("./middleware/auth");
 
 const app = express();
 
@@ -21,6 +22,9 @@ app.set("views", path.join(__dirname, "views"));
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(auth);
+
 app.use(express.static(path.join(__dirname, "public")));
 
 routes(app);

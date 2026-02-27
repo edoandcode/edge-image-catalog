@@ -1,7 +1,18 @@
 const jwt = require('jsonwebtoken');
 
 
+function isPublicRoute(req) {
+    return (
+        (req.path.startsWith("/auth/login") && req.method === "POST") ||
+        (req.path.startsWith("/users") && req.method === "POST")
+    );
+}
+
 function auth(req, res, next) {
+
+    if (isPublicRoute(req))
+        return next();
+
     const isFromCloudflare = !!req.headers['cf-ray'];
     const userId = req.headers['x-user-id'];
 

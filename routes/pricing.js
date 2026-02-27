@@ -36,19 +36,16 @@ function getPricingData(country) {
       price: 19,
       currency: "EUR",
       marketingMessage: "Soluzione ideale per il mercato italiano.",
-      heroImage: "/images/hero-it.jpg"
     },
     US: {
       price: 21,
       currency: "USD",
       marketingMessage: "Perfect solution for the US market.",
-      heroImage: "/images/hero-us.jpg"
     },
     FR: {
       price: 18,
       currency: "EUR",
       marketingMessage: "Solution adaptée au marché français.",
-      heroImage: "/images/hero-fr.jpg"
     }
   };
 
@@ -57,7 +54,6 @@ function getPricingData(country) {
       price: 25,
       currency: "USD",
       marketingMessage: "Global solution for international customers.",
-      heroImage: "/images/hero-default.jpg"
     }
   );
 }
@@ -65,14 +61,13 @@ function getPricingData(country) {
 // Rendering logic.
 router.get("/", (req, res) => {
   const country = resolveCountry(req);
-  const { price, currency, marketingMessage, heroImage } = getPricingData(country);
+  const { price, currency, marketingMessage } = getPricingData(country);
 
   res.render("pricing", {
     country,
     price,
     currency,
     marketingMessage,
-    heroImage
   });
 });
 
