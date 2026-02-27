@@ -17,12 +17,12 @@ function auth(req, res, next) {
         return next();
     }
 
+    console.log("JWT_SECRET_KEY:", process.env.JWT_SECRET_KEY);
 
     const token = req.header('x-auth-token');
     if (!token)
         return res.status(401).json({ error: 'Access denied. No token provided.' });
 
-    console.log("JWT_SECRET_KEY:", process.env.JWT_SECRET_KEY);
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
