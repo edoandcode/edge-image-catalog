@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(auth);
 
-app.use(express.static(path.join(__dirname, "public")));
+//app.use(express.static(path.join(__dirname, "public")));
 
 routes(app);
 
