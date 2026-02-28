@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken');
 function isPublicRoute(req) {
     return (
         (req.path.startsWith("/auth/login") && req.method === "POST") ||
-        (req.path.startsWith("/users") && req.method === "POST")
+        (req.path.startsWith("/users") && req.method === "POST") ||
+        (req.path === "/" && req.method === "GET")
     );
 }
 

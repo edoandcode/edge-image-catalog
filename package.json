@@ -14,8 +14,8 @@
   "dependencies": {
     "bcrypt": "^6.0.0",
     "dotenv": "^16.6.1",
-    "ejs": "^3.0.2",
     "express": "^5.1.0",
+    "geoip-lite": "^1.4.10",
     "jsonwebtoken": "^9.0.3",
     "lodash": "^4.17.23",
     "mongoose": "^9.2.2",
