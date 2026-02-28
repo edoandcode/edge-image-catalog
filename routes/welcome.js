@@ -1,7 +1,6 @@
 "use strict";
 const express = require("express");
 const geoip = require("geoip-lite");
-const { times } = require("lodash");
 
 const router = express.Router();
 
