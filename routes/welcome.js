@@ -20,13 +20,13 @@ router.get("/", (req, res) => {
 
     if (cfCountry) {
         country = cfCountry.trim().toUpperCase();
-        source = "cloudflare header";
+        source = "cloudflare";
     } else {
         const clientIp = getClientIp(req);
         const geo = geoip.lookup(clientIp);
 
         country = geo?.country || 'UNKNOWN';
-        source = "origin IP geolocation";
+        source = "origin";
     }
 
     res.json({
