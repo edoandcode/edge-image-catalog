@@ -13,30 +13,17 @@ function getClientIp(req) {
 }
 
 router.get("/", (req, res) => {
-    const cfCountry = req.headers["cf-ipcountry"];
+    const clientIp = getClientIp(req);
+    const geo = geoip.lookup(clientIp);
 
-    let country = null
-    let source = null
-
-    if (cfCountry) {
-        country = cfCountry.trim().toUpperCase();
-        source = "cloudflare";
-    } else {
-        const clientIp = getClientIp(req);
-        const geo = geoip.lookup(clientIp);
-
-        country = geo?.country || 'UNKNOWN';
-        source = "origin";
-    }
+    const country = geo?.country || "UNKNOWN";
 
     res.json({
         message: `Welcome! Your country is detected as ${country}`,
         country,
-        source,
+        source: "origin",
         timestamp: new Date().toISOString(),
     });
-
-
 });
 
 module.exports = router;
