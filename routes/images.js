@@ -45,7 +45,7 @@ router.get("/:filename", async (req, res) => {
         const contentType = contentTypeMap[ext] || "application/octet-stream";
 
         res.setHeader("Content-Type", contentType);
-        res.setHeader("Cache-Control", "public, max-age=31536000");
+        res.setHeader("Cache-Control", "no-store");
 
 
         let transformer = sharp(imagePath);
